@@ -1,14 +1,15 @@
 import sys
 from PyQt6 import uic
+from ui import Ui_Form
 from PyQt6.QtGui import QPainter, QPen, QColor, QPixmap
 from PyQt6.QtWidgets import QWidget, QApplication
 from random import randint
 
 
-class MainWindow(QWidget):  # main app
+class MainWindow(QWidget, Ui_Form):  # main app
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
         self.pixmap = QPixmap(400, 400)
         self.pixmap.fill(QColor("white"))
         self.label.setPixmap(self.pixmap)
@@ -20,7 +21,8 @@ class MainWindow(QWidget):  # main app
         pen.setWidth(3)
         pen.setColor(QColor(200, 100, 0))
         painter.setPen(pen)
-        painter.setBrush(QColor(255, 255, 0))
+        r, g, b = randint(1, 255), randint(1, 255), randint(1, 255)
+        painter.setBrush(QColor(r, g, b))
         w = randint(10, 100)
         x = randint(0, self.pixmap.width() - w)
         y = randint(0, self.pixmap.height() - w)
