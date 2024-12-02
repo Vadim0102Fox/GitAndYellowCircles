@@ -5,7 +5,7 @@ from PyQt6.QtWidgets import QWidget, QApplication
 from random import randint
 
 
-class MainWindow(QWidget):
+class MainWindow(QWidget):  # main app
     def __init__(self):
         super().__init__()
         uic.loadUi('UI.ui', self)
